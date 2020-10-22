@@ -1,0 +1,25 @@
+- if job.errors.present?
+  ul#error_explanation
+    - job.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: job, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'job_name'
+  .form-group
+    = f.label :salary
+    = f.text_field :salary, class: 'form-control', id: 'job_salary'
+  .form-group
+    = f.label :working_hours
+    = f.text_field :working_hours, class: 'form-control', id: 'working_hours'
+  .form-group
+    = f.label :place
+    = f.text_field :place, class: 'form-control', id: 'job_place'
+  .form-group
+    = check_box_tag :feature
+    = label_tag :feature, "未経験者歓迎"
+  .form-group
+    = f.label :catch
+    = f.text_area :catch, rows: 5, class: 'form-control', id: 'job_catch'
+  = f.submit nil, class: 'btn btn-primary'

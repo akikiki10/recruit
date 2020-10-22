@@ -1,0 +1,6 @@
+h1 求人の編集
+
+.nav.justify-content-end
+  = link_to '一覧', jobs_path, class: 'nav-link'
+
+= render partial: 'form', locals: { job: @job }

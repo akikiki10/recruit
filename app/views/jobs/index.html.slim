@@ -1,0 +1,19 @@
+h1 登録している求人
+
+= link_to '新規作成', new_job_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Job.human_attribute_name(:name)
+      th= Job.human_attribute_name(:created_at)
+      th
+  tbody
+    - @jobs.each do |job|
+      tr
+        td= link_to job.name, job
+        td= job.created_at
+        td
+          = link_to '編集', edit_job_path(job), class: 'btn btn-primary mr-3'
+          = link_to '削除', job, method: :delete, data: { confirm: "求人「#{job.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

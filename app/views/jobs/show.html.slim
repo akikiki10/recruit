@@ -1,0 +1,30 @@
+h1 求人の詳細
+
+.nav.justify-content-end
+  = link_to '一覧', jobs_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Job.human_attribute_name(:id)
+      td= @job.id
+    tr
+      th= Job.human_attribute_name(:name)
+      td= @job.name
+    tr
+      th= Job.human_attribute_name(:salary)
+      td= @job.salary
+    tr
+      th= Job.human_attribute_name(:working_hours)
+      td= @job.working_hours
+    tr
+      th= Job.human_attribute_name(:place)
+      td= @job.place
+    tr
+      th= Job.human_attribute_name(:feature)
+      td= @job.feature
+    tr
+      th= Job.human_attribute_name(:catch)
+      td= @job.catch
+
+= link_to '編集', edit_job_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @job, method: :delete, data: { confirm: "求人「#{@job.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

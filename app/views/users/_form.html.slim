@@ -1,0 +1,25 @@
+- if user.errors.present?
+  ul#error_explanation
+    - user.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: user, local: true do |f|
+  .form-group
+    = f.label :name, 'アカウント名'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :email, 'メールアドレス'
+    = f.text_field :email, class: 'form-control'
+  .form-group
+    = f.label :password, 'パスワード'
+    = f.text_field :password, class: 'form-control'
+  .form-group
+    = f.label :password_confirmation, 'パスワード(確認)'
+    = f.password_field :password_confirmation, class: 'form-control'
+  .form-group
+    = f.label :company, '会社名'
+    = f.text_field :company, class: 'form-control'
+  .form-group
+    = f.label :business, '事業内容'
+    = f.text_field :business, class: 'form-control'
+  = f.submit '登録する', class: 'btn btn-primary'
