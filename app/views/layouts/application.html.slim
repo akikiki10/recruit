@@ -9,13 +9,14 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .app-title.navbar.navbar-expand-md.navbar-dark.bg-dark
-      .navbar-brand town work
+      .navbar-brand
+        = link_to 'town work', '/'
 
       ul.navbar-nav.ml-auto
         - if current_user
           li.nav-item= link_to '求人一覧', jobs_path, class: 'nav-link'
           - if current_user
-            li.nav-item= link_to 'ユーザー一覧', users_path, class: 'nav-link'
+            li.nav-item= link_to '登録企業', current_user, class: 'nav-link'
           li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
         - else
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'

@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
-  def index
-    @users = User.all
-  end
+  before_action :ensure_correct_user, only: [:show]
+  #不要
+  #def index
+    #@users = current_user
+  #end
 
   def show
     @user = User.find(params[:id])
@@ -20,7 +22,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_path, notice: "ユーザー「#{@user.name}」を登録しました"
+      redirect_to jobs_path, notice: "ユーザー「#{@user.name}」を登録しました"
+      session[:user_id] = @user.id
     else
       render :new
     end

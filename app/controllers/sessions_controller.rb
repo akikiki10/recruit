@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :login_required
+  before_action :forbid_login_user, only: [:new, :create]
 
   def new
   end
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'ログインしました。'
+      redirect_to jobs_path, notice: 'ログインしました。'
     else
       render :new
     end

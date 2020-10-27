@@ -1,6 +1,5 @@
+<%#　不要　%>
 h1 ユーザー一覧
-
-= link_to '新規登録', new_user_path, class: 'btn btn-primary'
 
 .mb-3
 table.table.table-hover
@@ -12,12 +11,12 @@ table.table.table-hover
       th= User.human_attribute_name(:updated_at)
       th
   tbody
-    - @users.each do |user|
+    
       tr
-        td= link_to user.name, user
-        td= user.email
-        td= user.created_at
-        td= user.updated_at
+        td= link_to @users.name, @users
+        td= @users.email
+        td= @users.created_at
+        td= @users.updated_at
         td
-          = link_to '編集', edit_user_path(user), class: 'btn btn-primary mr-3'
-          = link_to '削除', user, method: :delete, data: { confirm: "ユーザ「#{user.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+          = link_to '編集', edit_user_path(@users), class: 'btn btn-primary mr-3'
+          = link_to '削除', @users, method: :delete, data: { confirm: "ユーザ「#{@users.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

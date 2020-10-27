@@ -20,6 +20,14 @@ ja:
         catch: キャッチフレーズ
         created_at: 登録日
         updated_at: 更新日
+      user:
+        id: ID
+        name: アカウント名
+        email: メールアドレス
+        company: 企業名
+        business: 業務内容
+        created_at: 登録日
+        updated_at: 更新日
   date:
     abbr_day_names:
     - 日
