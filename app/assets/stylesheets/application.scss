@@ -1,1 +1,11 @@
 @import "bootstrap";
+
+//ロゴ
+.navbar-brand a {
+  color: #fff;
+}
+
+.navbar-brand :hover {
+  text-decoration: none;
+  color: #fff;
+}
