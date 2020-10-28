@@ -1,6 +1,6 @@
 @import "bootstrap";
 
-//ロゴ
+//ヘッダーロゴ
 .navbar-brand a {
   color: #fff;
 }
@@ -8,4 +8,20 @@
 .navbar-brand :hover {
   text-decoration: none;
   color: #fff;
+}
+
+//ヘッダーログインフォーム
+.form-group {
+  color: #fff;
+}
+
+.lead {
+  font-size: 0.8rem;
+  margin-bottom: 3px;
+}
+
+.logincolor {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 3px;
 }

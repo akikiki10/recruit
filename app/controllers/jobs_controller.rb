@@ -1,10 +1,12 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :login_required, except: [:show]
+  before_action :set_job, only: [:edit, :update, :destroy]
   def index
-    @jobs = current_user.jobs
+    @jobs = current_users.jobs
   end
 
   def show
+    @job = Job.find(params[:id])
   end
 
   def new
@@ -12,7 +14,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = current_user.jobs.new(job_params)
+    @job = current_users.jobs.new(job_params)
 
     if @job.save
       redirect_to @job, notice: "求人「#{@job.name}」を登録しました"
@@ -41,6 +43,6 @@ class JobsController < ApplicationController
   end
 
   def set_job
-    @job = current_user.jobs.find(params[:id])
+    @job = current_users.jobs.find(params[:id])
   end
 end

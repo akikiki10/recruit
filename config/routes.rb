@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :jobs
   resources :users, except: [:index]
+  devise_for :callers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

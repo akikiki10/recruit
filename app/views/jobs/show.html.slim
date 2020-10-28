@@ -26,5 +26,5 @@ table.table.table-hover
       th= Job.human_attribute_name(:catch)
       td= @job.catch
 
-= link_to '編集', edit_job_path, class: 'btn btn-primary mr-3'
-= link_to '削除', @job, method: :delete, data: { confirm: "求人「#{@job.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to '編集', edit_job_path, class: 'btn btn-primary mr-3' if current_users
+= link_to '削除', @job, method: :delete, data: { confirm: "求人「#{@job.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger' if current_users

@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-  skip_before_action :login_required
   before_action :forbid_login_user, only: [:top]
   def top
+    @jobs = Job.all
   end
 
   def index

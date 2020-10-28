@@ -1,0 +1,8 @@
+= form_with model: @session, url: {controller: "sessions", action: "new"}, class: 'form-inline', local: true do |f|
+  .form-group
+    = f.label :email, 'Id'
+    = f.text_field :email, class: 'form-control form-control-sm', id: 'session_email', placeholder: "メールアドレス"
+  .form-group
+    = f.label :password, 'Pass'
+    = f.password_field :password, class: 'form-control form-control-sm', id: 'session_password', placeholder: "パスワード"
+  = f.submit 'ログイン', class: 'btn btn-primary btn-sm'

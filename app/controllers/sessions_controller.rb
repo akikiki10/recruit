@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_action :login_required
   before_action :forbid_login_user, only: [:new, :create]
 
   def new
@@ -24,6 +23,7 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:email, :password)
+    #.require(:session)削除
+    params.permit(:email, :password)
   end
 end

@@ -1,3 +1,15 @@
-h1 Tasks#top
-= link_to '企業新規会員登録', new_user_path, class: 'btn btn-primary'
-= link_to 'ログイン', login_path, class: 'nav-link'
+table.table.table-hover
+ thead.thead-default
+  tr
+    th= Job.human_attribute_name(:name)
+    th= Job.human_attribute_name(:place)
+    th= Job.human_attribute_name(:salary)
+    th= Job.human_attribute_name(:working_hours)
+  tbody
+    - @jobs.each do |job|
+      .jobshow
+        tr
+          td= link_to job.name, job
+          td= job.place
+          td= job.salary
+          td= job.working_hours

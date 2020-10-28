@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only: [:new, :create]
+  before_action :login_required, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:show]
   #不要
   #def index
-    #@users = current_user
+    #@users = current_users
   #end
 
   def show
@@ -32,13 +32,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_url, notice: "ユーザー「#{@user.name}」を更新しました"
+    redirect_to show, notice: "ユーザー「#{@user.name}」を更新しました"
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_url, notice: "ユーザー「#{@user.name}」を削除しました"
+    redirect_to root_path, notice: "ユーザー「#{@user.name}」を削除しました"
   end
 
   private

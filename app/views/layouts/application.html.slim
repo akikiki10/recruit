@@ -11,15 +11,38 @@ html
     .app-title.navbar.navbar-expand-md.navbar-dark.bg-dark
       .navbar-brand
         = link_to 'town work', '/'
-
-      ul.navbar-nav.ml-auto
-        - if current_user
+      
+      - if current_users
+        ul.navbar-nav.ml-auto
           li.nav-item= link_to '求人一覧', jobs_path, class: 'nav-link'
-          - if current_user
-            li.nav-item= link_to '登録企業', current_user, class: 'nav-link'
+          li.nav-item= link_to '登録企業', current_users, class: 'nav-link'
           li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-        - else
-          li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
+      - elsif caller_signed_in?
+        ul.navbar-nav.ml-auto
+          li.nav-item= link_to '求人一覧', jobs_path, class: 'nav-link'
+          li.nav-item= link_to 'プロフィール変更', edit_caller_registration_path, class: 'nav-link'
+          li.nav-item= link_to 'ログアウト', destroy_caller_session_path, method: :delete, class: 'nav-link'
+      - else
+        ul
+          div.row
+            div.col-6.bgred
+              div.row
+                div.col-6.bgred
+                  p.logincolor
+                    |
+                      一般会員
+                div.col-6.bgred
+                  p.lead= link_to '求人に応募をご希望の方', new_caller_registration_path
+              = render :partial => "devise/sessions/login"
+            div.col-6.bgred
+              div.row
+                div.col-6.bgred
+                  p.logincolor
+                    |
+                      求人会員
+                div.col-6.bgred
+                  p.lead= link_to '求人の掲載をご希望の方', new_user_path
+              = render :partial => "sessions/login"
     .container
       -if flash.notice.present?
         .alert.alert-success= flash.notice
